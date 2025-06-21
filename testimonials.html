@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our products - Vasant Seeds</title>
+    <meta name="description" content="Read what our farmers say about Vision Seeds' products and services. Real testimonials from satisfied customers.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="icon" href="img/finallogo.jpg">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        .testimonial-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.1);
+            background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-video {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .testimonial-video video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-video:hover video {
+            transform: scale(1.02);
+        }
+
+        .testimonial-stats {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.2rem;
+            font-size: 0.9rem;
+            color: #666;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .testimonial-stats span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f8f9fa;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-stats span:hover {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .testimonial-stats i {
+            color: #4CAF50;
+            transition: color 0.3s ease;
+        }
+
+        .testimonial-stats span:hover i {
+            color: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.8rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .testimonial-image {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 1.2rem;
+            border: 3px solid #4CAF50;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-image:hover {
+            transform: scale(1.05);
+        }
+
+        .testimonial-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #444;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding: 0 1.5rem;
+            line-height: 1.6;
+        }
+
+        .quote::before,
+        .quote::after {
+            content: '"';
+            font-size: 2.5rem;
+            color: #4CAF50;
+            position: absolute;
+            opacity: 0.3;
+        }
+
+        .quote::before {
+            left: 0;
+            top: -0.8rem;
+        }
+
+        .quote::after {
+            right: 0;
+            bottom: -1.5rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+                gap: 1.8rem;
+            }
+
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav-container">
+            <a href="/" class="logo">
+                <img src="img/finallogo.jpg" alt="Vision Seeds Logo" height="50">
+            </a>
+            
+            <button class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about.html">About Us</a></li>
+                <li><a href="/products.html">Products</a></li>
+                <li><a href="/testimonials.html">Testimonials</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>our customers</h1>
+            <p>What our farmers say about us</p>
+        </div>
+    </header>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials py-5">
+        <div class="container">
+            <div class="testimonial-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-video">
+                        <video controls>
+                            <source src="img/vdo1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="testimonial-image">
+                        <img src="https://www.kaveriseeds.in/wp-content/uploads/2019/06/vamsheedhar.png" alt="Rajesh Kumar">
+                    </div>
+                    <div class="testimonial-content">
+                        <p class="quote">"Vasant Seeds has transformed our farming practices. The quality and yield are exceptional. Their support team is always ready to help with any queries."</p>
+                        <div class="testimonial-author">
+                            <h3>Rajesh Kumar</h3>
+                            <p>Maharashtra</p>
+                            <div class="testimonial-stats">
+                                <span><i class="fas fa-seedling"></i> 5+ Years Customer</span>
+                                <span><i class="fas fa-chart-line"></i> 40% Yield Increase</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-video">
+                        <video controls>
+                            <source src="img/vdo2.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="testimonial-image">
+                        <img src="https://www.kaveriseeds.in/wp-content/uploads/2019/06/vanaja.png" alt="Priya Sharma">
+                    </div>
+                    <div class="testimonial-content">
+                        <p class="quote">"Their support and guidance have been invaluable to our farming success. The seeds are of premium quality and the results speak for themselves."</p>
+                        <div class="testimonial-author">
+                            <h3>Priya Sharma</h3>
+                            <p>Karnataka</p>
+                            <div class="testimonial-stats">
+                                <span><i class="fas fa-seedling"></i> 3+ Years Customer</span>
+                                <span><i class="fas fa-chart-line"></i> 35% Yield Increase</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-video">
+                        <video controls>
+                            <source src="img/vdo3.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="testimonial-image">
+                        <img src="https://www.kaveriseeds.in/wp-content/uploads/2019/06/pawan.png" alt="Suresh Patel">
+                    </div>
+                    <div class="testimonial-content">
+                        <p class="quote">"The best seed quality I've ever used. Highly recommended! Their commitment to quality and farmer support is unmatched in the industry."</p>
+                        <div class="testimonial-author">
+                            <h3>Suresh Patel</h3>
+                            <p>Gujarat</p>
+                            <div class="testimonial-stats">
+                                <span><i class="fas fa-seedling"></i> 7+ Years Customer</span>
+                                <span><i class="fas fa-chart-line"></i> 45% Yield Increase</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="testimonial-video">
+                        <video controls>
+                            <source src="img/vdo4.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="testimonial-image">
+                        <img src="https://www.kaveriseeds.in/wp-content/uploads/2019/06/chaya.png" alt="Anita Desai">
+                    </div>
+                    <div class="testimonial-content">
+                        <p class="quote">"I've been using Vasant Seeds for the past 5 years, and I can confidently say that their products have significantly improved our farm's productivity."</p>
+                        <div class="testimonial-author">
+                            <h3>Anita Desai</h3>
+                            <p>Madhya Pradesh</p>
+                            <div class="testimonial-stats">
+                                <span><i class="fas fa-seedling"></i> 5+ Years Customer</span>
+                                <span><i class="fas fa-chart-line"></i> 38% Yield Increase</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 5 -->
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="testimonial-video">
+                        <video controls>
+                            <source src="img/vdo5.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="testimonial-image">
+                        <img src="https://kaveriuniversity.edu.in/wp-content/uploads/2023/09/board-of-management-img-04.webp" alt="Rahul Singh">
+                    </div>
+                    <div class="testimonial-content">
+                        <p class="quote">"The technical support and guidance provided by Vasant Seeds have been crucial in helping us adopt modern farming practices."</p>
+                        <div class="testimonial-author">
+                            <h3>Rahul Singh</h3>
+                            <p>Punjab</p>
+                            <div class="testimonial-stats">
+                                <span><i class="fas fa-seedling"></i> 4+ Years Customer</span>
+                                <span><i class="fas fa-chart-line"></i> 42% Yield Increase</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 6 -->
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="testimonial-video">
+                        <video controls>
+                            <source src="img/vdo6.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="testimonial-image">
+                        <img src="https://d1hbpr09pwz0sk.cloudfront.net/profile_pic/anuradha-verma-4c4e51a7" alt="Meera Joshi">
+                    </div>
+                    <div class="testimonial-content">
+                        <p class="quote">"Their commitment to sustainable farming practices aligns perfectly with our values. The results have been outstanding."</p>
+                        <div class="testimonial-author">
+                            <h3>Meera Joshi</h3>
+                            <p>Rajasthan</p>
+                            <div class="testimonial-stats">
+                                <span><i class="fas fa-seedling"></i> 6+ Years Customer</span>
+                                <span><i class="fas fa-chart-line"></i> 39% Yield Increase</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="gallery py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Success Stories</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/Woman_at_work%2C_Gujarat.jpg" alt="Farm Success Story 1" class="gallery-image">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.csm.tech/storage/uploads/news/67656270418611734697584Thumb.jpg" alt="Farm Success Story 2" class="gallery-image">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://assets.aboutamazon.com/dims4/default/7810003/2147483647/strip/true/crop/1279x720+0+0/resize/1240x698!/quality/90/?url=https%3A%2F%2Famazon-blogs-brightspot.s3.amazonaws.com%2F55%2F50%2Fc063d7774a2188187ce689c739d0%2Ffarm3-1280x720.jpg" alt="Farm Success Story 3" class="gallery-image">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://t4.ftcdn.net/jpg/05/95/55/89/360_F_595558921_z1JnF4ieH75XlWoDPuh1Os97QkPnb4dx.jpg" alt="Farm Success Story 4" class="gallery-image">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.fairobserver.com/wp-content/uploads/2023/06/Indian-Farmer-1.jpg" alt="Farm Success Story 5" class="gallery-image">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://media.assettype.com/TNIE%2Fimport%2F2022%2F1%2F29%2Foriginal%2Ffarmer_EPS45.jpg?w=480&auto=format%2Ccompress&fit=max" alt="Farm Success Story 6" class="gallery-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="grid grid-3">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Flat No. 07, Balkrushna Residency,</p>
+                    <p> Shivshakti Nagar, Jail Road, Dasak,</p>
+                    <p>Nashik - 422101, (Maharashtra).</p>
+                    <p>Phone: +91 9423023411</p>
+                    <p>Email: vasantagrigenetics@gmail.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/about.html">About Us</a></li>
+                        <li><a href="/products.html">Products</a></li>
+                        <li><a href="/testimonials.html">Testimonials</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" target="_blank">Facebook</a>
+                        <a href="#" target="_blank">Twitter</a>
+                        <a href="#" target="_blank">Instagram</a>
+                        <a href="#" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom text-center mt-3">
+                <p>&copy; 2024 Vasant Seeds. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top">↑</button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Add smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
