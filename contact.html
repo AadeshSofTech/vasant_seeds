@@ -83,7 +83,7 @@
                 <!-- Contact Form -->
                 <div class="contact-form">
                     <h2>Send us a Message</h2>
-                    <form id="whatsappForm" class="inquiry-form">
+                    <form id="contactForm" class="inquiry-form" onsubmit="handleFormSubmit(event)">
                         <!-- Honeypot -->
                         <input type="text" name="_honey" style="display:none">
 
@@ -105,12 +105,12 @@
 
                         <div class="form-group">
                             <label for="phone">Phone</label>
-                            <input type="tel" id="phone" name="phone" class="form-control" required>
+                            <input type="tel" id="phone" name="phone" class="form-control">
                         </div>
 
                         <div class="form-group">
                             <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" class="form-control" required>
+                            <input type="text" id="subject" name="subject" class="form-control">
                         </div>
 
                         <div class="form-group">
@@ -118,7 +118,8 @@
                             <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <button type="button" class="btn btn-primary" onclick="sendWhatsApp()">Send via WhatsApp</button>
+                        <button type="button" class="btn btn-secondary" onclick="sendEmail()">Send via Email</button>
                     </form>
                 </div>
             </div>
@@ -185,33 +186,50 @@
     <script src="js/main.js"></script>
 
     <script>
-    document.getElementById('whatsappForm').addEventListener('submit', function(e) {
-        e.preventDefault();
+function handleFormSubmit(event) {
+    event.preventDefault();
+    return false;
+}
 
-        // Replace with your WhatsApp number (with country code, no + or spaces)
-        var phoneNumber = '+9192';
+function validateForm() {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
 
-        // Get form values
-        var name = document.getElementById('name').value;
-        var email = document.getElementById('email').value;
-        var phone = document.getElementById('phone').value;
-        var subject = document.getElementById('subject').value;
-        var message = document.getElementById('message').value;
+    if (!name || !email || !message) {
+        alert('Please fill in all fields');
+        return false;
+    }
 
-        // Format the message
-        var whatsappMessage = 
-            'Name: ' + name + '%0A' +
-            'Email: ' + email + '%0A' +
-            'Phone: ' + phone + '%0A' +
-            'Subject: ' + subject + '%0A' +
-            'Message: ' + message;
+    return {
+        name,
+        email,
+        message
+    };
+}
 
-        // WhatsApp URL
-        var whatsappURL = 'https://wa.me/' + phoneNumber + '?text=' + whatsappMessage;
+function sendWhatsApp() {
+    const formData = validateForm();
+    if (!formData) return;
 
-        // Redirect to WhatsApp
-        window.open(whatsappURL, '_blank');
-    });
+    const whatsappMessage = `*New Contact Form Submission*%0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Message:* ${formData.message}`;
+    const whatsappUrl = `https://wa.me/917720043415?text=${whatsappMessage}`;
+    
+    window.open(whatsappUrl, '_blank');
+    document.getElementById('contactForm').reset();
+}
+
+function sendEmail() {
+    const formData = validateForm();
+    if (!formData) return;
+
+    const subject = encodeURIComponent(`Website Contact Form: ${formData.name}`);
+    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
+    const mailtoUrl = `mailto:aadeshsoftech@gmail.com?subject=${subject}&body=${body}`;
+    
+    window.location.href = mailtoUrl;
+    document.getElementById('contactForm').reset();
+}
     </script>
 </body>
 </html> 
